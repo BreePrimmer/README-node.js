@@ -7,7 +7,7 @@ const fs = require('fs')
 
 function renderLicenseBadge(license) {
     if (license) {
-      return `![License](https://img.shields.io/badge/License-${license}.yellow.svg)`
+      return `![License](https://img.shields.io/badge/License-${license}-yellow.svg)`
     } else {
       return ""
     }
@@ -17,7 +17,7 @@ function renderLicenseBadge(license) {
   // If there is no license, return an empty string
   function renderLicenseLink(license) {
     if (license) {
-      return `[license link](https://img.shields.io/badge/License-${license}.yellow.svg)`
+      return `[license link](https://img.shields.io/badge/License-${license}-yellow.svg)`
     } else {
       return ""
     }
@@ -29,12 +29,12 @@ function renderLicenseBadge(license) {
     if (license) {
       return `## License
       
-      ${renderLicenseBadge()} ${renderLicenseLink()}`
+      ${renderLicenseBadge(license)} ${renderLicenseLink(license)}`
     }
   }
   
   // TODO: Create a function to generate markdown for README
-  const generateMarkdown = (title, description, installation, usage, contributing, tests, github, email) => {
+  const generateMarkdown = ({title, description, installation, usage, license, contributing, tests, github, email}) => (
     `# ${title}
     
     ## Description
@@ -58,9 +58,7 @@ function renderLicenseBadge(license) {
     
     ${usage}
     
-    ## License
-    
-    ${renderLicenseSection()}
+    ${renderLicenseSection(license)}
     
     ## Contributing
     
@@ -77,7 +75,7 @@ function renderLicenseBadge(license) {
   
     If you would like to reach out to me for any questions, you can communicate with me via my email, ${email}`
     
-  }
+  )
 
   inquirer.prompt([
     {
@@ -104,11 +102,11 @@ function renderLicenseBadge(license) {
         type: 'list',
         name: 'license',
         message: 'Please select a license for your project. If you do not want a license, hit enter.',
-        choices: ['License-MIT', 'Apache-2.0', 'PDDL', 'Zlib']
+        choices: ['MIT', 'ODC_BY', 'Zlib']
     },
     {
         type: 'input',
-        name: 'contribution',
+        name: 'contributing',
         message: 'Please write the contribution guidelines for your project:',
     },
     {

@@ -12,4 +12,4 @@ https://gist.github.com/rachelhyman/b1f109155c9dafffe618
 https://shields.io/badges
 
 "Markdown License badges" from github
-https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
+https://gist.github.com/kofiav/c1059e1075b67582e86b07aa9759e20d
