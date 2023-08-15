@@ -3,7 +3,7 @@
 
 function renderLicenseBadge(license) {
   if (license) {
-    return `![License](https://img.shields.io/badge/License-${license}.yellow.svg)`
+    return `![License](https://img.shields.io/badge/License-${license}-yellow.svg)`
   } else {
     return ""
   }
@@ -13,7 +13,7 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license) {
-    return `[license link](https://img.shields.io/badge/License-${license}.yellow.svg)`
+    return `Click [here](https://opensource.org/license/${license}/) for the license info.`
   } else {
     return ""
   }
@@ -25,13 +25,17 @@ function renderLicenseSection(license) {
   if (license) {
     return `## License
     
-    ${renderLicenseBadge()} ${renderLicenseLink()}`
+    ${renderLicenseBadge(license)} ${renderLicenseLink(license)}`
+  } else {
+    return ""
   }
-}
-
+} 
+ 
+ 
 // TODO: Create a function to generate markdown for README
-const generateMarkdown = (title, description, installation, usage, contributing, tests, github, email) => {
+const generateMarkdown = ({title, description, installation, usage, license, contributing, tests, github, email}) => (
   `# ${title}
+  ${renderLicenseBadge(license)}
   
   ## Description
   
@@ -54,9 +58,7 @@ const generateMarkdown = (title, description, installation, usage, contributing,
   
   ${usage}
   
-  ## License
-  
-  ${renderLicenseSection()}
+  ${renderLicenseSection(license)}
   
   ## Contributing
   
@@ -73,8 +75,6 @@ const generateMarkdown = (title, description, installation, usage, contributing,
 
   If you would like to reach out to me for any questions, you can communicate with me via my email, ${email}`
   
-}
-
-console.log(generateMarkdown())
+)
 
 module.exports = generateMarkdown();
