@@ -13,3 +13,6 @@ https://shields.io/badges
 
 "Markdown License badges" from github
 https://gist.github.com/kofiav/c1059e1075b67582e86b07aa9759e20d
+
+"Licenses" from open source initiative
+https://opensource.org/license/
